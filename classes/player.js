@@ -7,8 +7,8 @@ class Player {
     this.y = groundY;
 
     this.vy = 0;
-    this.gravity = 1.1;
-    this.jumpForce = -13;
+    this.gravity = 1.05;
+    this.jumpForce = -15;
 
     this.onGround = true;
   }
@@ -38,3 +38,4 @@ class Player {
     rect(this.x, this.y, this.size, this.size);
   }
 }
+
