@@ -16,16 +16,27 @@ class Game {
     this.spawnTimer++;
 
     
-    if (this.spawnTimer > 90) {
-      this.spawnTimer = 0;
-      this.obstacles.push(
-        new Obstacle(
-          width + 40,
-          this.groundY,40,40,
-          this.speed
-        )
-      );
-    }
+        if (this.spawnTimer > 90) {
+  this.spawnTimer = 0;
+
+  
+  let pattern = random([1, 2]);
+
+  if (pattern === 1) {
+    
+    this.obstacles.push(
+      new Obstacle(width + 40, this.groundY, 40, 40, this.speed)
+    );
+  } else {
+    
+    this.obstacles.push(
+      new Obstacle(width + 20, this.groundY, 40, 40, this.speed)
+    );
+    this.obstacles.push(
+      new Obstacle(width + 60, this.groundY, 40, 40, this.speed)
+    );
+  }
+}
 
     this.player.update();
 
@@ -92,4 +103,5 @@ reset() {
   this.score = 0;
   this.timer = 0;
 }
+
 }
