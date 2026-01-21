@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.groundY = height - 40;
     this.player = new Player(150, this.groundY, 40);
-    this.obstacles = [];
+    this.obstacles = []; /*pole prekazek*/
     this.spawnTimer = 0;
     this.speed = 6;
     this.score = 0;
@@ -15,7 +15,7 @@ class Game {
   update() {
     this.spawnTimer++;
 
-    
+    /*každých 90 snímků se vytvoří nová překážka*/
         if (this.spawnTimer > 90) {
   this.spawnTimer = 0;
 
@@ -40,7 +40,7 @@ class Game {
 
     this.player.update();
 
-    for (let obs of this.obstacles) {
+    for (let obs of this.obstacles) { /*projde prekazky ktere jsou ulozene v poli*/
       obs.update();
 
       if (obs.collides(this.player)) {
@@ -105,3 +105,4 @@ reset() {
 }
 
 }
+
