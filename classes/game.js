@@ -1,10 +1,13 @@
 class Game {
   constructor() {
-    this.groundY = height - 40;
-    this.player = new Player(150, this.groundY, 40);
+    this.groundY = height - 40; /*výška země kde stojí hráč*/
+    this.player = new Player(150, this.groundY, 40); /*vytvoreni noveho hrace*/
     this.obstacles = []; /*pole prekazek*/
-    this.spawnTimer = 0;
-    this.speed = 6;
+  
+    this.spawnTimer = 0;/*timer na spawn*/
+    
+    /*rychlost , score,  casovac a nejlepsi skore*/
+    this.speed = 6; 
     this.score = 0;
     this.timer = 0;
     this.best = 0;
@@ -20,12 +23,12 @@ class Game {
   this.spawnTimer = 0;
 
   
-  let pattern = random([1, 2]);
+  let pattern = random([1, 2]);/*z funkce random se nahodne spawne bud jeden nebo dva obstacles , neboli prekazky*/
 
   if (pattern === 1) {
     
     this.obstacles.push(
-      new Obstacle(width + 40, this.groundY, 40, 40, this.speed)
+      new Obstacle(width + 40, this.groundY, 40, 40, this.speed) /*vytvoří nový objekt překážky a ulozi jej do pole obstacles*/
     );
   } else {
     
@@ -44,16 +47,16 @@ class Game {
       obs.update();
 
       if (obs.collides(this.player)) {
-        this.reset();
+        this.reset();/*pokud se player dotkne prekazky tak se hra resetne*/
         return;
       }
     }
 
-    this.obstacles = this.obstacles.filter(o => !o.offscreen());
+    this.obstacles = this.obstacles.filter(o => !o.offscreen());/*vymaze prekazky, ktere jsou mimo obrazovku a necha ty ktere jsou na obrazovce*/
     this.timer++;
 
     if (this.timer === 60) { 
-      this.score++;
+      this.score++; /*pokud timer bude */
       this.timer = 0;
 }
 
@@ -91,7 +94,7 @@ class Game {
   jump() {
     this.player.jump();
   }
-
+/*Uložení nejlepšího skóre*/
 reset() {
   if (this.score > this.best) {
     this.best = this.score;
@@ -105,4 +108,5 @@ reset() {
 }
 
 }
+
 
