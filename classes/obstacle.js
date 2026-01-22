@@ -7,7 +7,7 @@ class Obstacle {
     this.speed = speed;
   }
 
-  update() {
+  update() {/*posouva prekazku */
     this.x -= this.speed;
   }
 
@@ -16,7 +16,7 @@ class Obstacle {
     noStroke();
 
     
-    triangle(
+    triangle(/*vytvoreni trojuhelniků*/
       this.x, this.y - this.h / 2,       
       this.x - this.w / 2, this.y + this.h / 2, 
       this.x + this.w / 2, this.y + this.h / 2  
@@ -24,11 +24,11 @@ class Obstacle {
   }
 
   offscreen() {
-    return this.x + this.w < 0;
+    return this.x + this.w < 0; /*zjisteni jestli je objekt mimo obrazovku*/
   }
 
   collides(player) {
-    
+    /*Kontrola kolize s hráčem, ktera vrací true, pokud se překážka a hráč dotýkají*/
     return (
       player.x + player.size / 2 > this.x - this.w / 2 &&
       player.x - player.size / 2 < this.x + this.w / 2 &&
@@ -37,4 +37,5 @@ class Obstacle {
     );
   }
 }
+
 
